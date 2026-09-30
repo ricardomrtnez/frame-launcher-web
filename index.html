@@ -11,6 +11,7 @@
   <title>Frame Launcher · Descarga para Android</title>
   <link rel="icon" href="./assets/icon.png">
   <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/mobile.css">
 </head>
 <body>
   <main>
@@ -35,6 +36,17 @@
         <img class="phone phone-back" src="./assets/screenshots/clima.jpg" alt="Tarjeta de clima de Frame Launcher">
         <img class="phone phone-front" src="./assets/screenshots/favoritos.jpg" alt="Pantalla de favoritos de Frame Launcher">
       </div>
+    </section>
+
+    <section class="mobile-preview" aria-label="Explora Frame Launcher">
+      <div class="preview-head"><p class="eyebrow">DESLIZA PARA EXPLORAR</p><span>Arrastra ↔</span></div>
+      <div class="preview-track">
+        <figure><img src="./assets/screenshots/favoritos.jpg" alt="Tus aplicaciones favoritas"><figcaption><strong>Favoritos</strong><span>Todo lo esencial, siempre a mano.</span></figcaption></figure>
+        <figure><img src="./assets/screenshots/ahora.jpg" alt="Agenda y avisos"><figcaption><strong>Ahora</strong><span>Tu día resumido en una tarjeta.</span></figcaption></figure>
+        <figure><img src="./assets/screenshots/clima.jpg" alt="Previsión meteorológica"><figcaption><strong>Clima</strong><span>Información útil, sin abrir otra app.</span></figcaption></figure>
+        <figure><img src="./assets/screenshots/reproductor.jpg" alt="Reproductor de música"><figcaption><strong>Música</strong><span>Control total desde tu inicio.</span></figcaption></figure>
+      </div>
+      <div class="swipe-dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </section>
 
     <section class="statement">
@@ -106,5 +118,38 @@
       <span><a href="./privacy/">Privacidad</a><a href="./terms/">Términos y reembolsos</a><a href="mailto:vnic.chico@gmail.com">Soporte</a></span>
     </footer>
   </main>
+  <a class="mobile-download" href="./downloads/Frame-Launcher-1.0.0.apk" download><span>↓</span><strong>Descargar gratis</strong><small>APK · 3,8 MB</small></a>
+  <script>
+    document.documentElement.classList.add('has-js');
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          reveal.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -32px' });
+    document.querySelectorAll('.statement,.feature-card,.essentials>div,.pricing>div,.install>*,.download-cta').forEach((el) => {
+      el.classList.add('reveal');
+      reveal.observe(el);
+    });
+    const track = document.querySelector('.preview-track');
+    const dots = [...document.querySelectorAll('.swipe-dots i')];
+    if (track && dots.length) {
+      const updateDots = () => {
+        const cards = [...track.children];
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let active = 0;
+        let distance = Infinity;
+        cards.forEach((card, index) => {
+          const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+          if (Math.abs(cardCenter - center) < distance) { distance = Math.abs(cardCenter - center); active = index; }
+        });
+        dots.forEach((dot, index) => dot.classList.toggle('active', index === active));
+      };
+      dots[0].classList.add('active');
+      track.addEventListener('scroll', updateDots, { passive: true });
+    }
+  </script>
 </body>
 </html>

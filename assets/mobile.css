@@ -1,0 +1,91 @@
+.mobile-preview,.mobile-download{display:none}
+
+.has-js .reveal{opacity:0;transform:translateY(36px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.has-js .reveal.is-visible{opacity:1;transform:none}
+.essentials>div:nth-child(2){transition-delay:.08s}
+.essentials>div:nth-child(3){transition-delay:.16s}
+
+.phone-front{animation:phone-float 6s ease-in-out infinite}
+.phone-back{animation:phone-float-back 7s ease-in-out infinite .8s}
+.glow{animation:glow-pulse 5s ease-in-out infinite}
+@keyframes phone-float{0%,100%{transform:rotate(-5deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-14px)}}
+@keyframes phone-float-back{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(7deg) translateY(12px)}}
+@keyframes glow-pulse{0%,100%{opacity:.65;transform:scale(.94)}50%{opacity:1;transform:scale(1.07)}}
+
+@media(max-width:680px){
+  html{scroll-padding-top:78px}
+  body{padding-bottom:82px}
+  main{width:100%}
+  nav,main>section,footer{margin-left:14px;margin-right:14px}
+  nav{position:sticky;top:0;z-index:40;min-height:64px;margin:0;padding:0 14px;background:rgba(8,9,11,.82);border-bottom-color:rgba(255,255,255,.09);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+  nav .brand img{width:32px;height:32px}
+  .nav-actions .nav-download{display:none}
+
+  .hero{display:flex;flex-direction:column;gap:0;padding:42px 0 24px;text-align:center}
+  .hero-copy{display:flex;flex-direction:column;align-items:center}
+  .hero .eyebrow{font-size:.62rem;margin-bottom:17px}
+  .hero h1{font-size:clamp(3.4rem,17vw,4.65rem);line-height:.88;letter-spacing:-.075em}
+  .lede{font-size:1rem;line-height:1.55;margin:24px 4px 25px;max-width:380px}
+  .actions{width:100%;gap:12px}
+  .actions .button{min-height:54px;font-size:1rem}
+  .release{justify-content:center;font-size:.84rem}
+  .trust{font-size:.71rem;margin:13px 0 0;white-space:normal}
+  .hero-visual{height:395px;width:100%;margin:20px 0 0}
+  .hero-visual .phone{width:194px;border-radius:24px}
+  .hero-visual .phone-front{left:calc(50% - 150px);top:53px}
+  .hero-visual .phone-back{right:calc(50% - 150px);top:8px}
+  .hero-visual .glow{width:310px;height:310px;top:45px;right:calc(50% - 155px)}
+
+  .mobile-preview{display:block;margin:0;padding:50px 0 68px;overflow:hidden;border-top:1px solid var(--line)}
+  .preview-head{display:flex;justify-content:space-between;align-items:center;padding:0 2px 18px}
+  .preview-head .eyebrow{margin:0;font-size:.64rem}
+  .preview-head>span{font-size:.72rem;color:var(--muted)}
+  .preview-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:18px;padding:0 18px 14px;margin:0 -14px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none}
+  .preview-track::-webkit-scrollbar{display:none}
+  .preview-track figure{position:relative;flex:0 0 78vw;max-width:310px;margin:0;scroll-snap-align:center;background:linear-gradient(145deg,#1b1e22,#101216);border:1px solid #30343b;border-radius:27px;padding:14px 14px 20px;overflow:hidden}
+  .preview-track figure:before{content:"";position:absolute;inset:auto 10% 12% 10%;height:45%;background:var(--accent);opacity:.1;filter:blur(42px)}
+  .preview-track img{position:relative;display:block;width:100%;aspect-ratio:587/1000;object-fit:cover;object-position:top;border-radius:18px;border:1px solid #363a42;box-shadow:0 20px 45px #000}
+  .preview-track figcaption{position:relative;display:flex;flex-direction:column;padding:16px 4px 0}
+  .preview-track figcaption strong{font-size:1.22rem;letter-spacing:-.03em}
+  .preview-track figcaption span{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .swipe-dots{display:flex;justify-content:center;gap:6px;margin-top:4px}
+  .swipe-dots i{width:6px;height:6px;border-radius:50%;background:#3e4249;transition:width .25s,background .25s}
+  .swipe-dots i.active{width:20px;border-radius:999px;background:var(--accent)}
+
+  .statement{padding:78px 0}
+  .statement h2{font-size:2.45rem;line-height:1.03}
+  .showcase{display:flex;overflow-x:auto;gap:14px;margin:0;padding:0 18px 20px;scroll-snap-type:x mandatory;scroll-padding:18px;scrollbar-width:none}
+  .showcase::-webkit-scrollbar{display:none}
+  .feature-card,.feature-card.feature-wide{flex:0 0 86vw;max-width:340px;min-height:610px;scroll-snap-align:center;padding:25px;border-radius:25px}
+  .feature-card h3{font-size:2.25rem;margin-top:20px}
+  .feature-card p{font-size:.94rem}
+  .feature-card img,.feature-wide img{width:215px;margin:34px auto -190px;border-radius:23px}
+  .essentials{margin:65px 14px}
+  .pricing,.install{padding-left:0;padding-right:0}
+  .pricing h2,.install h2{font-size:2.75rem}
+  .price-card{border-radius:24px}
+  .download-cta{margin-left:14px;margin-right:14px;border-radius:26px}
+  footer{padding-bottom:30px}
+
+  .mobile-download{position:fixed;display:grid;grid-template-columns:34px 1fr auto;grid-template-rows:auto auto;align-items:center;column-gap:10px;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:100;min-height:62px;padding:8px 15px 8px 10px;color:#081006;background:rgba(182,255,69,.95);border:1px solid rgba(255,255,255,.5);border-radius:18px;text-decoration:none;box-shadow:0 15px 45px rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .mobile-download>span{grid-row:1/3;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#0a1008;color:var(--accent);font-size:1.15rem}
+  .mobile-download strong{align-self:end;font-size:.91rem;line-height:1.1}
+  .mobile-download small{align-self:start;font-size:.67rem;line-height:1.2;opacity:.67}
+  .mobile-download:after{content:"ANDROID";grid-column:3;grid-row:1/3;font-size:.61rem;font-weight:900;letter-spacing:.12em}
+}
+
+@media(max-width:370px){
+  .hero h1{font-size:3.25rem}
+  .hero-visual{height:350px}
+  .hero-visual .phone{width:175px}
+  .hero-visual .phone-front{left:calc(50% - 135px)}
+  .hero-visual .phone-back{right:calc(50% - 135px)}
+  .preview-track figure{flex-basis:82vw}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .phone-front,.phone-back,.glow{animation:none}
+  .has-js .reveal{opacity:1;transform:none;transition:none}
+  *{scroll-behavior:auto!important}
+}
